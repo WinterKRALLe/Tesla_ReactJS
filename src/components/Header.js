@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { selectCars } from '../features/car/carSlice'
 import { useSelector } from 'react-redux'
+import { style } from '@mui/system'
 
 function Header() {
     const [burgerStatus, setBurgerStatus] = useState(false)
@@ -11,7 +12,7 @@ function Header() {
 
     return (
         <Container>
-            <a>
+            <a href="/">
                 <img src="/images/logo.svg" />
             </a>
             <Menu>
@@ -46,7 +47,7 @@ function Header() {
 export default Header
 
 const Container = styled.div`
-    min-height: 3.75rem;
+    min-height: 3.5rem;
     position: fixed;
     display: flex;
     align-items: center;
@@ -66,25 +67,41 @@ const Menu = styled.div`
     a {
         font-weight: 600;
         text-transform: uppercase;
-        padding: 0 .625rem;
+        padding: .5rem 1rem;
         flex-wrap: nowrap;
+    
+        :hover {
+            background-color: rgba(0, 0, 0, .05);
+            border-radius: 10px;
+        }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1100px) {
         display: none;
     }
 `
 const RightMenu = styled.div`
     display: flex;
     align-items: center;
+
     a {
         font-weight: 600;
         text-transform: uppercase;
-        margin-right: .625rem;
+        padding: .5rem 1rem;
+        flex-wrap: nowrap;
+        @media screen and (max-width: 468px) {
+            display: none;
+        }
     }
+    a:hover {
+        background-color: rgba(0, 0, 0, .05);
+        border-radius: 10px;
+    }
+
 `
 const CustomMenu = styled(MenuIcon)`
     cursor: pointer;
+    display: flex;
 `
 const BurgerNav = styled.div`
     position: fixed;
@@ -102,16 +119,26 @@ const BurgerNav = styled.div`
     transition: transform .4s;
 
     li {
-        padding: 1rem;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
-
+        padding: .5rem;
+        
         a {
             font-weight: 600;
+            padding: .25rem .5rem;
+        }
+        a:hover {
+            background-color: rgba(0, 0, 0, .05);
+            border-radius: 15px;
         }
     }
 `
 const CustomClose = styled(CloseIcon)`
     cursor: pointer;
+
+    :hover {
+        background-color: rgba(0, 0, 0, .05);
+        border-radius: 100px;
+    }
 `
 const CloseWrapper = styled.div`
     display: flex;
